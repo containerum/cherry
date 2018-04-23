@@ -1,1 +1,1 @@
-Repo for Containerum API errors
+Repo for Containerum API errors library

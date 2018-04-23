@@ -6,9 +6,12 @@ import (
 	"net/http"
 )
 
+//go:generate swagger generate spec -o swagger.json -m
+
 // ErrSID -- represents service ID of error
-//go:generate stringer -type=ErrSID
 type ErrSID uint64
+
+//go:generate stringer -type=ErrSID
 
 // ErrKind -- represents kind of error
 type ErrKind uint64
@@ -34,6 +37,7 @@ func (errID *ErrID) String() string {
 // 		+ "field 'Replicas' must be non-zero value"
 //		+ "not enough tights to feed gopher"
 //		+ "resource 'God' does't exist"
+// swagger:model
 type Err struct {
 	Message    string   `json:"message"`
 	StatusHTTP int      `json:"status_http"`

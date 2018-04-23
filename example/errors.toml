@@ -1,0 +1,28 @@
+# Errors definitions and error package meta
+
+# Package name is required
+Name = "example-errors"
+# SID is required, have to be non zero
+SID = 73
+
+# Global keys constants, can be reused in error details messages
+[Keys]
+    Package = "example-errors"
+    Mouse = "Jerry"
+
+# Global template strings, can be reused in util funcs
+[Templates]
+    ValidationError = "field {{.Field}}}, want {{.ValidVal}}, have {{.InvalidVal}}"
+
+# error definition
+[[error]]
+    Name = "InvalidCheese"
+    StatusHTTP = 400
+    Message = "invalid cheese in the trap"
+    Comment = "returned in case of mouse complaints"
+    # Context string messages
+    Details = [
+        "My name is {{.Mouse}}, from {{.Package}}!"
+    ]
+    # Unique error ID
+    Kind = 120

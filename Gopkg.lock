@@ -2,6 +2,24 @@
 
 
 [[projects]]
+  name = "github.com/BurntSushi/toml"
+  packages = ["."]
+  revision = "b26d9c308763d68093482582cea63d69be07a0f0"
+  version = "v0.3.0"
+
+[[projects]]
+  name = "github.com/blang/semver"
+  packages = ["."]
+  revision = "2ee87856327ba09384cabd113bc6b5d174e9ec0f"
+  version = "v3.5.1"
+
+[[projects]]
+  name = "github.com/dave/jennifer"
+  packages = ["jen"]
+  revision = "0264ec47f284c27fe4f52072dc0f4da5a5771c04"
+  version = "v0.19.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/gin-contrib/sse"
   packages = ["."]
@@ -138,6 +156,12 @@
   version = "v8.18.1"
 
 [[projects]]
+  branch = "v2"
+  name = "gopkg.in/urfave/cli.v2"
+  packages = ["."]
+  revision = "d3ae77c26ac8db90639677e4831a728d33c36111"
+
+[[projects]]
   name = "gopkg.in/yaml.v2"
   packages = ["."]
   revision = "a5b47d31c556af34a302ce5d659e6fea44d90de0"
@@ -145,6 +169,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "8fc7af8c6a5a6e197f27ae40c888abc1406fd5c3142dec478e25aca8cb959791"
+  inputs-digest = "17b13855c967c04ee067b0a871b6a1cb82dce9063db8c874dc6f2e5d52f8fdc8"
   solver-name = "gps-cdcl"
   solver-version = 1

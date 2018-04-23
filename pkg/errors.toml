@@ -1,0 +1,71 @@
+Name = "noicerrs"
+SID = 265
+
+[[error]]
+    Name = "UnableToOpenTOMLfile"
+    Message = "unable to open file"
+    Kind = 1
+    StatusHTTP = 418
+
+[[error]]
+    Name = "UnableToParseTOMLfile"
+    Message = "unable to parse TOML file"
+    Kind = 2
+    StatusHTTP = 418
+
+[[error]]
+    Name = "UnableToCreatePackageDir"
+    Message = "unable to create package name"
+    Kind = 3
+    StatusHTTP = 418
+
+[[error]]
+    Name = "UnableToWriteSourcefile"
+    Message = "unable to write source file"
+    Kind = 4
+    StatusHTTP = 418
+
+[[error]]
+    Name = "UndefinedSID"
+    Message = "undefined SID"
+    Kind = 5
+    StatusHTTP = 418
+    Details = [
+        "must be > 0"
+    ]
+
+[[error]]
+    Name = "UndefinedPackageName"
+    Message = "undefined package name"
+    Kind = 6
+    StatusHTTP = 418
+
+[[error]]
+    Name = 'UndefinedKind'
+    Message = "undefined error kind"
+    Kind = 7
+    StatusHTTP = 418
+    Details = [
+        "in error {{.ErrorName}}"
+    ]
+
+[[error]]
+    Name = "UndefinedStatusHTTP"
+    Message = "undefined status HTTP"
+    Kind = 8
+    StatusHTTP = 418
+    Details = [
+        "in error {{.ErrorName}}"
+    ]
+
+[[error]]
+    Name = "UnableToWriteJSONfile"
+    Message = "unable to write json file"
+    Kind = 9
+    StatusHTTP = 418
+
+[[error]]
+    Name = "ConflictingKinds"
+    Message = "conflicting kinds"
+    Kind = 10
+    StatusHTTP = 418

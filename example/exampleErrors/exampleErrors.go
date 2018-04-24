@@ -3,7 +3,7 @@ package exampleErrors
 
 import (
 	bytes "bytes"
-	cherry "git.containerum.net/ch/kube-client/pkg/cherry"
+	cherry "git.containerum.net/ch/cherry"
 	template "text/template"
 )
 

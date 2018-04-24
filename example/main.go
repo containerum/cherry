@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"git.containerum.net/ch/cherry/example/example-errors"
+	"git.containerum.net/ch/cherry/example/exampleErrors"
 )
 
 //go:generate noice -t ./errors.toml

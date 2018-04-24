@@ -49,8 +49,7 @@
     },
     "ErrSID": {
       "description": "ErrSID -- represents service ID of error",
-      "type": "integer",
-      "format": "uint64",
+      "type": "string",
       "x-go-package": "git.containerum.net/ch/cherry"
     }
   }

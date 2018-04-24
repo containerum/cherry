@@ -2,14 +2,15 @@ package noicerrs
 
 import (
 	bytes "bytes"
-	cherry "git.containerum.net/ch/cherry"
 	template "text/template"
+
+	cherry "git.containerum.net/ch/cherry"
 )
 
 const ()
 
 func ErrUnableToOpenTOMLfile(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "unable to open file", StatusHTTP: 418, ID: cherry.ErrID{SID: 0x109, Kind: 0x1}, Details: []string(nil)}
+	err := &cherry.Err{Message: "unable to open file", StatusHTTP: 418, ID: cherry.ErrID{SID: "noice", Kind: 0x1}, Details: []string(nil)}
 	for _, param := range params {
 		param(err)
 	}
@@ -21,7 +22,7 @@ func ErrUnableToOpenTOMLfile(params ...func(*cherry.Err)) *cherry.Err {
 }
 
 func ErrUnableToParseTOMLfile(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "unable to parse TOML file", StatusHTTP: 418, ID: cherry.ErrID{SID: 0x109, Kind: 0x2}, Details: []string(nil)}
+	err := &cherry.Err{Message: "unable to parse TOML file", StatusHTTP: 418, ID: cherry.ErrID{SID: "noice", Kind: 0x2}, Details: []string(nil)}
 	for _, param := range params {
 		param(err)
 	}
@@ -33,7 +34,7 @@ func ErrUnableToParseTOMLfile(params ...func(*cherry.Err)) *cherry.Err {
 }
 
 func ErrUnableToCreatePackageDir(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "unable to create package name", StatusHTTP: 418, ID: cherry.ErrID{SID: 0x109, Kind: 0x3}, Details: []string(nil)}
+	err := &cherry.Err{Message: "unable to create package name", StatusHTTP: 418, ID: cherry.ErrID{SID: "noice", Kind: 0x3}, Details: []string(nil)}
 	for _, param := range params {
 		param(err)
 	}
@@ -45,7 +46,7 @@ func ErrUnableToCreatePackageDir(params ...func(*cherry.Err)) *cherry.Err {
 }
 
 func ErrUnableToWriteSourcefile(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "unable to write source file", StatusHTTP: 418, ID: cherry.ErrID{SID: 0x109, Kind: 0x4}, Details: []string(nil)}
+	err := &cherry.Err{Message: "unable to write source file", StatusHTTP: 418, ID: cherry.ErrID{SID: "noice", Kind: 0x4}, Details: []string(nil)}
 	for _, param := range params {
 		param(err)
 	}
@@ -57,7 +58,7 @@ func ErrUnableToWriteSourcefile(params ...func(*cherry.Err)) *cherry.Err {
 }
 
 func ErrUndefinedSID(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "undefined SID", StatusHTTP: 418, ID: cherry.ErrID{SID: 0x109, Kind: 0x5}, Details: []string{"must be > 0"}}
+	err := &cherry.Err{Message: "undefined SID", StatusHTTP: 418, ID: cherry.ErrID{SID: "noice", Kind: 0x5}, Details: []string{"must be > 0"}}
 	for _, param := range params {
 		param(err)
 	}
@@ -69,7 +70,7 @@ func ErrUndefinedSID(params ...func(*cherry.Err)) *cherry.Err {
 }
 
 func ErrUndefinedPackageName(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "undefined package name", StatusHTTP: 418, ID: cherry.ErrID{SID: 0x109, Kind: 0x6}, Details: []string(nil)}
+	err := &cherry.Err{Message: "undefined package name", StatusHTTP: 418, ID: cherry.ErrID{SID: "noice", Kind: 0x6}, Details: []string(nil)}
 	for _, param := range params {
 		param(err)
 	}
@@ -81,7 +82,7 @@ func ErrUndefinedPackageName(params ...func(*cherry.Err)) *cherry.Err {
 }
 
 func ErrUndefinedKind(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "undefined error kind", StatusHTTP: 418, ID: cherry.ErrID{SID: 0x109, Kind: 0x7}, Details: []string{"in error {{.ErrorName}}"}}
+	err := &cherry.Err{Message: "undefined error kind", StatusHTTP: 418, ID: cherry.ErrID{SID: "noice", Kind: 0x7}, Details: []string{"in error {{.ErrorName}}"}}
 	for _, param := range params {
 		param(err)
 	}
@@ -93,7 +94,7 @@ func ErrUndefinedKind(params ...func(*cherry.Err)) *cherry.Err {
 }
 
 func ErrUndefinedStatusHTTP(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "undefined status HTTP", StatusHTTP: 418, ID: cherry.ErrID{SID: 0x109, Kind: 0x8}, Details: []string{"in error {{.ErrorName}}"}}
+	err := &cherry.Err{Message: "undefined status HTTP", StatusHTTP: 418, ID: cherry.ErrID{SID: "noice", Kind: 0x8}, Details: []string{"in error {{.ErrorName}}"}}
 	for _, param := range params {
 		param(err)
 	}
@@ -105,7 +106,7 @@ func ErrUndefinedStatusHTTP(params ...func(*cherry.Err)) *cherry.Err {
 }
 
 func ErrUnableToWriteJSONfile(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "unable to write json file", StatusHTTP: 418, ID: cherry.ErrID{SID: 0x109, Kind: 0x9}, Details: []string(nil)}
+	err := &cherry.Err{Message: "unable to write json file", StatusHTTP: 418, ID: cherry.ErrID{SID: "noice", Kind: 0x9}, Details: []string(nil)}
 	for _, param := range params {
 		param(err)
 	}
@@ -117,7 +118,7 @@ func ErrUnableToWriteJSONfile(params ...func(*cherry.Err)) *cherry.Err {
 }
 
 func ErrConflictingKinds(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "conflicting kinds", StatusHTTP: 418, ID: cherry.ErrID{SID: 0x109, Kind: 0xa}, Details: []string(nil)}
+	err := &cherry.Err{Message: "conflicting kinds", StatusHTTP: 418, ID: cherry.ErrID{SID: "noice", Kind: 0xa}, Details: []string(nil)}
 	for _, param := range params {
 		param(err)
 	}

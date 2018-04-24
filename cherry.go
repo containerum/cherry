@@ -9,9 +9,7 @@ import (
 //go:generate swagger generate spec -o swagger.json -m
 
 // ErrSID -- represents service ID of error
-type ErrSID uint64
-
-//go:generate stringer -type=ErrSID
+type ErrSID string
 
 // ErrKind -- represents kind of error
 type ErrKind uint64

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"net/http"
+	"runtime"
 	"strconv"
 	"strings"
 )
@@ -57,6 +58,24 @@ func NewErr(msg string, status int, ID ErrID) *Err {
 		StatusHTTP: status,
 		ID:         ID,
 	}
+}
+
+// Emit -- if err is nil, the return initialized error
+func (err *Err) Emit() *Err {
+	if err == nil {
+		_, file, line, _ := runtime.Caller(1)
+		err = NewErr("undefined error", -1, ErrID{"", -1}).
+			WithField("file", file).
+			WithField("line", strconv.Itoa(line))
+	}
+	return err
+}
+
+func (err *Err) EmitDefault(defaulterr Err) *Err {
+	if err == nil {
+		return &defaulterr
+	}
+	return err
 }
 
 // BuildErr -- produces Err constructor with custom
@@ -154,10 +173,14 @@ func Equals(err error, other *Err) bool {
 	if err == nil {
 		return false
 	}
-	if cherryErr, ok := err.(*Err); ok {
-		return cherryErr.Equals(other)
+	switch otherErr := err.(type) {
+	case *Err:
+		return other.Equals(otherErr)
+	case ErrConstruct:
+		return otherErr().Equals(other)
+	default:
+		return false
 	}
-	return false
 }
 
 // WhichOne -- searches err in list of cherry errs.
@@ -167,12 +190,8 @@ func WhichOne(err error, list ...*Err) *Err {
 	if err == nil {
 		return nil
 	}
-	cherryErr, ok := err.(*Err)
-	if !ok {
-		return nil
-	}
 	for _, v := range list {
-		if cherryErr.Equals(v) {
+		if Equals(err, v) {
 			return v
 		}
 	}

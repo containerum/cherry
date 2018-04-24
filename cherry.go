@@ -26,6 +26,7 @@ func (errID *ErrID) String() string {
 	return fmt.Sprintf("%v-%v", errID.SID, errID.Kind)
 }
 
+// Fields -- represents additional key-value fields of error
 type Fields map[string]string
 
 // Err -- standard serializable API error

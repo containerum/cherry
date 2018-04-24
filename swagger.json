@@ -3,7 +3,7 @@
   "paths": {},
   "definitions": {
     "Err": {
-      "description": "Err -- standard serializable API error\nMessage -- constant error message:\n+ \"invalid username\"\n+ \"quota exceeded\"\n+ \"validation error\"\n...etc...\nID -- unique error identification code\nDetails -- optional context error messages kinda\n+ \"field 'Replicas' must be non-zero value\"\n+ \"not enough tights to feed gopher\"\n+ \"resource 'God' does't exist\"",
+      "description": "Err -- standard serializable API error\nMessage -- constant error message:\n+ \"invalid username\"\n+ \"quota exceeded\"\n+ \"validation error\"\n...etc...\nID -- unique error identification code\nDetails -- optional context error messages kinda\n+ \"field 'Replicas' must be non-zero value\"\n+ \"not enough tights to feed gopher\"\n+ \"resource 'God' does't exist\"\nFields -- optional set of key-value pairs",
       "type": "object",
       "properties": {
         "details": {
@@ -12,6 +12,9 @@
             "type": "string"
           },
           "x-go-name": "Details"
+        },
+        "fields": {
+          "$ref": "#/definitions/Fields"
         },
         "id": {
           "$ref": "#/definitions/ErrID"
@@ -50,6 +53,14 @@
     "ErrSID": {
       "description": "ErrSID -- represents service ID of error",
       "type": "string",
+      "x-go-package": "git.containerum.net/ch/cherry"
+    },
+    "Fields": {
+      "description": "Fields -- represents additional key-value fields of error",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
       "x-go-package": "git.containerum.net/ch/cherry"
     }
   }

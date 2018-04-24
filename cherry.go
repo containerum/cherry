@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"fmt"
 	"net/http"
+	"strconv"
+	"strings"
 )
 
 //go:generate swagger generate spec -o swagger.json -m
@@ -24,6 +26,8 @@ func (errID *ErrID) String() string {
 	return fmt.Sprintf("%v-%v", errID.SID, errID.Kind)
 }
 
+type Fields map[string]string
+
 // Err -- standard serializable API error
 // Message -- constant error message:
 //		+ "invalid username"
@@ -35,12 +39,14 @@ func (errID *ErrID) String() string {
 // 		+ "field 'Replicas' must be non-zero value"
 //		+ "not enough tights to feed gopher"
 //		+ "resource 'God' does't exist"
+// Fields -- optional set of key-value pairs
 // swagger:model
 type Err struct {
 	Message    string   `json:"message"`
 	StatusHTTP int      `json:"status_http"`
 	ID         ErrID    `json:"id"`
 	Details    []string `json:"details,omitempty"`
+	Fields     Fields   `json:"fields,omitempty"`
 }
 
 // NewErr -- constructs Err struct with provided message and ID
@@ -70,16 +76,17 @@ func (err *Err) Error() string {
 	buf := bytes.NewBufferString("[" + err.ID.String() + "] " +
 		http.StatusText(err.StatusHTTP) + " " +
 		err.Message)
-	detailsLen := len(err.Details)
-	if detailsLen > 0 {
+	if len(err.Details) > 0 {
 		buf.WriteString(": ")
+		buf.WriteString(strings.Join(err.Details, "; "))
 	}
-	for i, msg := range err.Details {
-		if i+1 == detailsLen {
-			buf.WriteString(msg)
-		} else {
-			buf.WriteString(msg + "; ")
+	if len(err.Fields) > 0 {
+		buf.WriteString(": ")
+		var fields []string
+		for name, value := range err.Fields {
+			fields = append(fields, name+"="+strconv.QuoteToASCII(value))
 		}
+		buf.WriteString(strings.Join(fields, ", "))
 	}
 	return buf.String()
 }
@@ -100,6 +107,29 @@ func (err *Err) AddDetailsErr(details ...error) *Err {
 	for _, detail := range details {
 		err.AddDetails(detail.Error())
 	}
+	return err
+}
+
+// WithField -- adds field to Err, chainable
+func (err *Err) WithField(name, value string) *Err {
+	if err.Fields == nil {
+		err.Fields = make(Fields)
+	}
+
+	err.Fields[name] = value
+	return err
+}
+
+// WithFields -- adds fields to Err, chainable
+func (err *Err) WithFields(fields Fields) *Err {
+	if err.Fields == nil {
+		err.Fields = make(Fields)
+	}
+
+	for name, value := range fields {
+		err.Fields[name] = value
+	}
+
 	return err
 }
 

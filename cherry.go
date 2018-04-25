@@ -64,7 +64,7 @@ func NewErr(msg string, status int, ID ErrID) *Err {
 func (err *Err) Emit() *Err {
 	if err == nil {
 		_, file, line, _ := runtime.Caller(1)
-		err = NewErr("undefined error", -1, ErrID{"", -1}).
+		err = NewErr("undefined error", 0, ErrID{}).
 			WithField("file", file).
 			WithField("line", strconv.Itoa(line))
 	}

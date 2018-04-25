@@ -1,0 +1,24 @@
+{
+  "name": "exampleErrors",
+  "sid": 73,
+  "errors": [
+    {
+      "message": "invalid cheese in the trap",
+      "status_http": 400,
+      "id": {
+        "sid": 73,
+        "kind": 120
+      },
+      "details": [
+        "My name is {{.Mouse}}, from {{.Package}}!"
+      ]
+    }
+  ],
+  "Templates": {
+    "ValidationError": "field {{.Field}}}, want {{.ValidVal}}, have {{.InvalidVal}}"
+  },
+  "Keys": {
+    "Mouse": "Jerry",
+    "Package": "example-errors"
+  }
+}

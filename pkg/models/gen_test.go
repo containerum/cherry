@@ -17,7 +17,7 @@ func TestErrorFuncGeneration(test *testing.T) {
 		Name:       "ErrCantGenerateCode",
 		Message:    "error while generating code",
 		StatusHTTP: 500,
-		SID:        200,
+		SID:        "noice",
 		Kind:       2049,
 		Details: []string{
 			"noice {.thing}",
@@ -39,7 +39,7 @@ func TestErrorFuncGeneration(test *testing.T) {
 func TestServiceGenerator(test *testing.T) {
 	service := &Service{
 		Name: "te",
-		SID:  10,
+		SID:  "sid",
 		Error: []TOMLerror{
 			{
 				Name:    "InvalidMessage",

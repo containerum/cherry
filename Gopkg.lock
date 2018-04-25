@@ -16,8 +16,8 @@
 [[projects]]
   name = "github.com/dave/jennifer"
   packages = ["jen"]
-  revision = "0264ec47f284c27fe4f52072dc0f4da5a5771c04"
-  version = "v0.19.0"
+  revision = "5cd0d60f624ee11e556da84dee6a907278ea92d7"
+  version = "v0.17.0"
 
 [[projects]]
   branch = "master"
@@ -169,6 +169,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "17b13855c967c04ee067b0a871b6a1cb82dce9063db8c874dc6f2e5d52f8fdc8"
+  inputs-digest = "ac696e6084d6356bda473f824fd6de7d86fc833e9f11090d225fcb38352b0c95"
   solver-name = "gps-cdcl"
   solver-version = 1

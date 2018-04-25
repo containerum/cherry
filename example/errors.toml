@@ -2,8 +2,8 @@
 
 # Package name is required
 Name = "example-errors"
-# SID is required, have to be non zero
-SID = 73
+# SID is required, have to be non empty
+SID = "example-service"
 
 # Global keys constants, can be reused in error details messages
 [Keys]

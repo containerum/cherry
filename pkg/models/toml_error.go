@@ -18,8 +18,8 @@ type TOMLerror struct {
 	Name       string
 	Message    string
 	StatusHTTP int
-	SID        uint64
-	Kind       uint64
+	SID        cherry.ErrSID
+	Kind       cherry.ErrKind
 	Comment    string
 	Details    []string
 }

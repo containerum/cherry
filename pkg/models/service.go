@@ -18,14 +18,14 @@ var (
 
 type Service struct {
 	Name      string
-	SID       uint64
+	SID       cherry.ErrSID
 	Error     []TOMLerror
 	Templates map[string]string
 	Keys      map[string]string
 }
 
 func (service *Service) Validate() error {
-	if service.SID == 0 {
+	if service.SID == "" {
 		return noicerrs.ErrUndefinedSID()
 	}
 	service.Name = strings.TrimSpace(service.Name)
@@ -98,9 +98,9 @@ func (service *Service) GenerateSourceString() (string, error) {
 func (service *Service) MarshalJSON() ([]byte, error) {
 	service.Validate()
 	type _JSONadaptor struct {
-		Name      string       `json:"name"`
-		SID       uint64       `json:"sid"`
-		Errors    []cherry.Err `json:"errors"`
+		Name      string        `json:"name"`
+		SID       cherry.ErrSID `json:"sid"`
+		Errors    []cherry.Err  `json:"errors"`
 		Templates map[string]string
 		Keys      map[string]string
 	}

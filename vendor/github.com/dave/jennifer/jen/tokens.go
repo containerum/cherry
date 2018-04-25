@@ -44,7 +44,7 @@ func (t token) render(f *File, w io.Writer, s *Statement) error {
 			// default constant types can be left bare
 			out = fmt.Sprintf("%#v", t.content)
 		case float64:
-			// float is a special case because fmt package doesn't format correctly
+			// float is a special case becase fmt package doesn't format correctly
 			if v == float64(int64(v)) {
 				// value is a whole number, so fmt package will omit the
 				// trailing ".0", so we add it.
@@ -60,7 +60,7 @@ func (t token) render(f *File, w io.Writer, s *Statement) error {
 			// fmt package already renders parenthesis for complex64
 			out = fmt.Sprintf("%T%#v", t.content, t.content)
 		default:
-			panic(fmt.Sprintf("unsupported type for literal: %T", t.content))
+			out = fmt.Sprintf("%#v", t.content)
 		}
 		if _, err := w.Write([]byte(out)); err != nil {
 			return err
@@ -224,24 +224,14 @@ func (s *Statement) Id(name string) *Statement {
 
 // Qual renders a qualified identifier. Imports are automatically added when
 // used with a File. If the path matches the local path, the package name is
-// omitted. If package names conflict they are automatically renamed. Note that
-// it is not possible to reliably determine the package name given an arbitrary
-// package path, so a sensible name is guessed from the path and added as an
-// alias. The names of all standard library packages are known so these do not
-// need to be aliased. If more control is needed of the aliases, see
-// [File.ImportName](#importname) or [File.ImportAlias](#importalias).
+// omitted. If package names conflict they are automatically renamed.
 func Qual(path, name string) *Statement {
 	return newStatement().Qual(path, name)
 }
 
 // Qual renders a qualified identifier. Imports are automatically added when
 // used with a File. If the path matches the local path, the package name is
-// omitted. If package names conflict they are automatically renamed. Note that
-// it is not possible to reliably determine the package name given an arbitrary
-// package path, so a sensible name is guessed from the path and added as an
-// alias. The names of all standard library packages are known so these do not
-// need to be aliased. If more control is needed of the aliases, see
-// [File.ImportName](#importname) or [File.ImportAlias](#importalias).
+// omitted. If package names conflict they are automatically renamed.
 func (g *Group) Qual(path, name string) *Statement {
 	s := Qual(path, name)
 	g.items = append(g.items, s)
@@ -250,12 +240,7 @@ func (g *Group) Qual(path, name string) *Statement {
 
 // Qual renders a qualified identifier. Imports are automatically added when
 // used with a File. If the path matches the local path, the package name is
-// omitted. If package names conflict they are automatically renamed. Note that
-// it is not possible to reliably determine the package name given an arbitrary
-// package path, so a sensible name is guessed from the path and added as an
-// alias. The names of all standard library packages are known so these do not
-// need to be aliased. If more control is needed of the aliases, see
-// [File.ImportName](#importname) or [File.ImportAlias](#importalias).
+// omitted. If package names conflict they are automatically renamed.
 func (s *Statement) Qual(path, name string) *Statement {
 	g := &Group{
 		close: "",

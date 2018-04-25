@@ -5,11 +5,12 @@ import (
 	"strings"
 	"unicode"
 
+	"git.containerum.net/ch/cherry"
 	"git.containerum.net/ch/cherry/pkg/noicerrs"
 )
 
-func extractDefinedKinds(errs []TOMLerror) (map[uint64]TOMLerror, error) {
-	defined := map[uint64]TOMLerror{}
+func extractDefinedKinds(errs []TOMLerror) (map[cherry.ErrKind]TOMLerror, error) {
+	defined := map[cherry.ErrKind]TOMLerror{}
 	for _, tomlerr := range errs {
 		if tomlerr.Kind != 0 {
 			if conflict, alreadyDefined := defined[tomlerr.Kind]; alreadyDefined {
@@ -25,7 +26,7 @@ func extractDefinedKinds(errs []TOMLerror) (map[uint64]TOMLerror, error) {
 }
 
 func findConfictingKinds(errs []TOMLerror) error {
-	defined := map[uint64]TOMLerror{}
+	defined := map[cherry.ErrKind]TOMLerror{}
 	for _, tomlerr := range errs {
 		if tomlerr.Kind != 0 {
 			if conflict, alreadyDefined := defined[tomlerr.Kind]; alreadyDefined {
@@ -40,9 +41,10 @@ func findConfictingKinds(errs []TOMLerror) error {
 	}
 	return nil
 }
-func calculateFreeKinds(errNum uint64, errs map[uint64]TOMLerror) []uint64 {
-	kinds := []uint64{}
-	for i := uint64(1); i <= errNum; i++ {
+
+func calculateFreeKinds(errNum uint64, errs map[cherry.ErrKind]TOMLerror) []cherry.ErrKind {
+	kinds := []cherry.ErrKind{}
+	for i := cherry.ErrKind(1); i <= cherry.ErrKind(errNum); i++ {
 		if _, isOccupied := errs[i]; !isOccupied {
 			kinds = append(kinds, i)
 		}

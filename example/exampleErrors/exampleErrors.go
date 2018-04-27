@@ -3,7 +3,7 @@ package exampleErrors
 
 import (
 	bytes "bytes"
-	cherry "git.containerum.net/ch/cherry"
+	cherry "github.com/containerum/cherry"
 	template "text/template"
 )
 
@@ -14,7 +14,7 @@ const (
 // ErrInvalidCheese error
 // returned in case of mouse complaints
 func ErrInvalidCheese(params ...func(*cherry.Err)) *cherry.Err {
-	err := &cherry.Err{Message: "invalid cheese in the trap", StatusHTTP: 400, ID: cherry.ErrID{SID: "example-service", Kind: 0x78}, Details: []string{"My name is {{.Mouse}}, from {{.Package}}!"}, Fields: map[string]string(nil)}
+	err := &cherry.Err{Message: "invalid cheese in the trap", StatusHTTP: 400, ID: cherry.ErrID{SID: "example-service", Kind: 0x78}, Details: []string{"My name is {{.Mouse}}, from {{.Package}}!"}, Fields: cherry.Fields(nil)}
 	for _, param := range params {
 		param(err)
 	}

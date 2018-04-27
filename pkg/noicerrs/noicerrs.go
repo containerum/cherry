@@ -4,7 +4,7 @@ import (
 	bytes "bytes"
 	template "text/template"
 
-	cherry "git.containerum.net/ch/cherry"
+	cherry "github.com/containerum/cherry"
 )
 
 const ()

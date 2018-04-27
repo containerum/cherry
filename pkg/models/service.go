@@ -7,8 +7,8 @@ import (
 	"sort"
 	"strings"
 
-	"git.containerum.net/ch/cherry"
-	"git.containerum.net/ch/cherry/pkg/noicerrs"
+	"github.com/containerum/cherry"
+	"github.com/containerum/cherry/pkg/noicerrs"
 	"github.com/dave/jennifer/jen"
 )
 

@@ -7,8 +7,8 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"git.containerum.net/ch/cherry/pkg/noicerrs"
-	"git.containerum.net/ch/cherry/pkg/toml"
+	"github.com/containerum/cherry/pkg/noicerrs"
+	"github.com/containerum/cherry/pkg/toml"
 	"github.com/blang/semver"
 	cli "gopkg.in/urfave/cli.v2"
 )

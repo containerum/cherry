@@ -3,7 +3,7 @@ package toml
 import (
 	"io"
 
-	"git.containerum.net/ch/cherry/pkg/models"
+	"github.com/containerum/cherry/pkg/models"
 	shushiToml "github.com/BurntSushi/toml"
 )
 

@@ -5,8 +5,8 @@ import (
 	"strings"
 	"unicode"
 
-	"git.containerum.net/ch/cherry"
-	"git.containerum.net/ch/cherry/pkg/noicerrs"
+	"github.com/containerum/cherry"
+	"github.com/containerum/cherry/pkg/noicerrs"
 )
 
 func extractDefinedKinds(errs []TOMLerror) (map[cherry.ErrKind]TOMLerror, error) {

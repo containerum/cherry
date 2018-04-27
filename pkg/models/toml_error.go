@@ -6,12 +6,12 @@ import (
 	"strings"
 	"unicode"
 
-	"git.containerum.net/ch/cherry"
+	"github.com/containerum/cherry"
 	"github.com/dave/jennifer/jen"
 )
 
 const (
-	CherryPath = "git.containerum.net/ch/cherry"
+	CherryPath = "github.com/containerum/cherry"
 )
 
 type TOMLerror struct {
